@@ -31,7 +31,12 @@ export default function GetStarted({
       <Button
         title="Get Started"
         style={styles.button}
-        onPress={() => navigation.navigate('Login')}
+        onPress={() =>
+          navigation.reset({
+            index: 0,
+            routes: [{name: 'Login'}],
+          })
+        }
       />
     </SafeAreaView>
   );
