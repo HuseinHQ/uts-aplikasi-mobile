@@ -5,6 +5,7 @@ const colors = {
   black: {
     default: 'black',
     light: '#B2B2B2',
+    halfOpacity: '#00000080',
   },
   white: {
     default: '#FFFFFF',
@@ -14,6 +15,9 @@ const colors = {
   },
   orange: {
     default: 'orange',
+  },
+  green: {
+    default: '#24FF00',
   },
 };
 

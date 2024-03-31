@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Image, SafeAreaView, StyleSheet, Text} from 'react-native';
 import Spacer from '../../components/Spacer';
 import text from '../../consts/text';
 import colors from '../../consts/colors';
 import Button from '../../components/Button';
 import {NavigationProps} from '../../screen/navigationTypes';
+import storage from '../../storage';
 
 export default function GetStarted({
   navigation,
 }: NavigationProps): React.JSX.Element {
+  useEffect(() => {
+    storage
+      .load({key: 'authToken'})
+      .then(authToken => {
+        if (authToken) {
+          (navigation.navigate as any)('Bottom Tab');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [navigation.navigate]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Image

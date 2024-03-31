@@ -7,6 +7,7 @@ import {RatioHelper} from '../helpers';
 import {useNavigation} from '@react-navigation/native';
 import {LOGIN_PASSWORD, LOGIN_USERNAME} from '../../env/env';
 import colors from '../consts/colors';
+import storage from '../storage';
 
 interface FormProps {
   fields: string[];
@@ -32,7 +33,11 @@ const Form: React.FC<FormProps> = ({fields}) => {
       formState.username === LOGIN_USERNAME &&
       formState.password === LOGIN_PASSWORD
     ) {
-      (navigation.navigate as any)('Get Started');
+      storage.save({key: 'authToken', data: true});
+      (navigation.reset as any)({
+        index: 0,
+        routes: [{name: 'Bottom Tab'}],
+      });
     } else {
       Alert.alert(
         'Invalid Username or Password',
@@ -45,9 +50,8 @@ const Form: React.FC<FormProps> = ({fields}) => {
     <>
       <View style={styles.container}>
         {fields.map((field, index) => (
-          <View style={styles.inputContainer}>
+          <View key={index} style={styles.inputContainer}>
             <TextInput
-              key={index}
               onChangeText={onChangeHandler(field)}
               value={formState[field]}
               placeholder={field}

@@ -17,7 +17,7 @@ export default function Login(): React.JSX.Element {
         <Text style={styles.text}>MUSIC</Text>
       </View>
 
-      <Spacer height={50} />
+      <Spacer height={RatioHelper.screenWidth / 6} />
 
       <View>
         <View style={styles.textContainer}>
@@ -31,13 +31,13 @@ export default function Login(): React.JSX.Element {
         <Text style={styles.text}>Music Platform</Text>
       </View>
 
-      <Spacer height={50} />
+      <Spacer height={RatioHelper.screenWidth / 6} />
 
       <View>
         <Form fields={['username', 'password']} />
       </View>
 
-      <Spacer height={20} />
+      <Spacer height={RatioHelper.screenWidth / 12} />
 
       <View style={styles.textContainer2}>
         <Text style={styles.text2}>
@@ -53,7 +53,7 @@ export default function Login(): React.JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.white.default,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     paddingBottom: 20,
     paddingHorizontal: 20,
